@@ -1,11 +1,11 @@
-import Header from "@/components/header"
+import Header from "@/components/Header"
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "react-vertical-timeline-component/style.min.css";
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer";
 import ThemeContextProvider from "@/context/theme-context";
-import ThemeSwitch from "@/components/theme-switch";
+import ThemeSwitch from "@/components/ThemeSwitch";
 import { Toaster } from "react-hot-toast";
 import ActiveSectionContextProvider from "@/context/active-section-context";
 
@@ -30,8 +30,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-950 h-[5350px]`}>
+    <html lang="en" className="!scroll-smooth">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-950 h-[5350px] dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90`}>
   
         <div className="absolute inset-0 flex justify-center gap-20 -z-10">
           <div className="bg-[#fbe2e3] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem]" />
