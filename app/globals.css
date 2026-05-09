@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #2942b4;
+  --background: #dde3ff;
   --foreground: #1d1f1d;
   --muted: #6d665d;
   --nav-muted: #5f594f;
-  --card: rgba(255, 251, 245, 0.72);
+  --card: #fffbf5b8;
   --card-strong: #fffaf2;
-  --line: rgba(39, 35, 29, 0.12);
-  --accent: #d95d39;
+  --line: #27231d1f;
+  --accent: #394dd9;
   --accent-soft: #f2c4a8;
-  --olive: #2f4f45;
+  --olive: #00b77e;
 }
 
 .dark {
