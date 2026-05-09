@@ -1,2 +1,128 @@
 @import "tailwindcss";
 
+:root {
+  --background: #2942b4;
+  --foreground: #1d1f1d;
+  --muted: #6d665d;
+  --nav-muted: #5f594f;
+  --card: rgba(255, 251, 245, 0.72);
+  --card-strong: #fffaf2;
+  --line: rgba(39, 35, 29, 0.12);
+  --accent: #d95d39;
+  --accent-soft: #f2c4a8;
+  --olive: #2f4f45;
+}
+
+.dark {
+  --background: #171916;
+  --foreground: #f4eee3;
+  --muted: #b9b0a3;
+  --nav-muted: #e3dacd;
+  --card: rgba(33, 36, 31, 0.78);
+  --card-strong: #20231e;
+  --line: rgba(255, 247, 234, 0.12);
+  --accent: #f08a62;
+  --accent-soft: rgba(240, 138, 98, 0.2);
+  --olive: #9cbe8d;
+}
+
+html {
+  background: var(--background);
+}
+
+body {
+  font-family: var(--font-manrope), sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(217, 93, 57, 0.12), transparent 28rem),
+    radial-gradient(circle at top right, rgba(47, 79, 69, 0.12), transparent 24rem),
+    linear-gradient(180deg, rgba(255, 250, 242, 0.66), transparent 18rem),
+    var(--background);
+  color: var(--foreground);
+}
+
+::selection {
+  background: var(--accent);
+  color: #fffdf9;
+}
+
+a,
+button,
+input,
+textarea {
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.site-shell {
+  position: relative;
+  overflow: clip;
+}
+
+.site-glow {
+  position: fixed;
+  z-index: -1;
+  width: 28rem;
+  height: 28rem;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.site-glow-left {
+  top: -7rem;
+  left: -8rem;
+  background: rgba(217, 93, 57, 0.24);
+}
+
+.site-glow-right {
+  top: 8rem;
+  right: -10rem;
+  background: rgba(47, 79, 69, 0.2);
+}
+
+.section-kicker {
+  color: var(--accent);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.editorial-title {
+  font-family: var(--font-syne), sans-serif;
+  letter-spacing: -0.04em;
+}
+
+.surface-card {
+  border: 1px solid var(--line);
+  background: var(--card);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 45px rgba(42, 31, 16, 0.06);
+}
+
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 18px 18px;
+  mask-image: radial-gradient(circle at center, black, transparent 82%);
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

@@ -1,82 +1,163 @@
 "use client";
 
-import React from 'react'
-import Image from 'next/image';
-import {motion} from "framer-motion"
-import {BsArrowRight, BsLinkedin} from "react-icons/bs"
-import {HiDownload} from "react-icons/hi"
-import {FaGithubSquare} from "react-icons/fa"
-import Link from 'next/link';
-import { useState } from 'react';
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { BsArrowRight, BsLinkedin } from "react-icons/bs";
+import { FaGithubSquare } from "react-icons/fa";
+import { HiDownload } from "react-icons/hi";
+import { introStats } from "@/lib/data";
+import { useSectionInView } from "@/lib/hooks";
 
 export default function Intro() {
-    return (
-        <section className='mb-28 max-w-[50rem] text-center sm:mb-0'>
-            <div className="flex items-center justify-center">
-                <div className="mt-22 text-center relative">
-                    <motion.div initial={{opacity: 0, scale: 0}} animate={{opacity: 1, scale: 1}} transition={{type: "tween",duration: 0.2}}>
-                        <Image src="/foto-fer.jpg" alt="Fernando portrait" width={192} height={192} quality={95} priority={true} className="rounded-full h-65 w-50 object-cover border-[0.35rem] border-white shadow-xl" />
-                        <motion.span className='text-4xl absolute bottom-0 right-0' initial={{opacity: 0, scale: 0}} animate={{opacity: 1, scale: 1}} transition={{type: "spring",duration: 0.7, delay:0.1, stiffness:125}}>🤖</motion.span>
-                    </motion.div>
-                </div>
+  const { ref } = useSectionInView("Home", 0.45);
+
+  return (
+    <section
+      id="home"
+      ref={ref}
+      className="relative scroll-mt-28 pb-18 pt-10 sm:pb-24 sm:pt-16"
+    >
+      <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14">
+        <motion.div
+          initial={{ opacity: 0, y: 42 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="space-y-7"
+        >
+          <p className="section-kicker">AI and automation / technical presales / startup leadership</p>
+
+          <div className="space-y-5">
+            <div className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
+              <span className="rounded-full border border-[var(--line)] px-4 py-2">
+                based in Peru
+              </span>
+              <span className="rounded-full border border-[var(--line)] px-4 py-2">
+                enterprise + startup perspective
+              </span>
             </div>
-            <motion.h1
-                className="mb-10 mt-4 px-4 text-2xl font-medium leading-normal! sm:text-4xl"
-                initial={{ opacity: 0, y: 100 }}
-                animate={{ opacity: 1, y: 0 }}
+
+            <h1 className="editorial-title max-w-4xl text-5xl font-bold leading-[0.94] tracking-[-0.07em] sm:text-6xl lg:text-7xl">
+              I connect
+              <span className="text-[var(--accent)]"> AI, automation, </span>
+              and
+              <span className="text-[var(--olive)]"> product leadership</span>
+              into work that creates real momentum.
+            </h1>
+
+            <p className="max-w-2xl text-lg leading-8 text-[var(--muted)] sm:text-xl">
+              I&apos;m Fernando, a computer engineer currently working in technical
+              presales, learning and applying automation and AI tools while building
+              a strong point of view around foundational models, RAG systems, and
+              user-centered solution design. I also lead teams, partnerships, events,
+              and startup initiatives when the opportunity calls for it.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <Link
+              href="#projects"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--foreground)] px-6 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-[var(--background)]"
             >
-                <span className="font-bold">Hello, I'm Fernando.</span>{" "}
-                I'm a <span className="font-bold">computer engineer</span> with{" "}
-                <span className="font-bold">3 years</span> of experience. I enjoy building{" "}
-                <span className="italic">websites, applications</span>, entrepreneurship,
-                and creating practical solutions. My main focus is on{" "}
-                <span className="underline">Automation and AI solutions</span>.
-            </motion.h1>
-            <motion.div
-                className="flex flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium"
-                initial={{ opacity: 0, y: 100 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                delay: 0.1,
-                }}
+              View selected work
+              <BsArrowRight className="text-base" />
+            </Link>
+
+            <a
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--line)] bg-[var(--card-strong)] px-6 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-[var(--foreground)]"
+              href="/CV Fernando.pdf"
+              download
             >
-                <Link
-                href="#contact"
-                className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
-                onClick={() => {
-                    //setActiveSection("Contact");
-                    //setTimeOfLastClick(Date.now());
-                }}
-                >
-                Contact me here{" "}
-                <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition" />
-                </Link>
+              Download CV
+              <HiDownload className="text-base" />
+            </a>
 
-                <a
-                className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10"
-                href="/CV Fernando.pdf"
-                download
-                >
-                Download CV{" "}
-                <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
-                </a>
+            <a
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[var(--line)] bg-[var(--card-strong)] text-xl text-[var(--foreground)]"
+              href="https://www.linkedin.com/in/fernando-abel-vergara-guzman"
+              target="_blank"
+            >
+              <BsLinkedin />
+            </a>
 
-                <a
-                className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
-                href="https://www.linkedin.com/in/fernando-abel-vergara-guzman"
-                target="_blank"
-                >
-                <BsLinkedin />
-                </a>
+            <a
+              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[var(--line)] bg-[var(--card-strong)] text-2xl text-[var(--foreground)]"
+              href="https://github.com/FernadoVG"
+              target="_blank"
+            >
+              <FaGithubSquare />
+            </a>
+          </div>
 
-                <a
-                className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
-                href="https://github.com/FernadoVG"
-                target="_blank"
-                >
-                <FaGithubSquare />
-                </a>
-            </motion.div>
-        </section>
-    )
+          <div className="grid gap-3 pt-2 sm:grid-cols-3">
+            {introStats.map((stat) => (
+              <div
+                key={stat.label}
+                className="surface-card rounded-[1.75rem] p-5"
+              >
+                <p className="editorial-title text-3xl font-bold text-[var(--foreground)]">
+                  {stat.value}
+                </p>
+                <p className="mt-2 text-sm leading-6 text-[var(--muted)]">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.08 }}
+          className="relative"
+        >
+          <div className="grain surface-card relative overflow-hidden rounded-[2rem] p-5 sm:p-7">
+            <div className="grid gap-5 sm:grid-cols-[1.05fr_0.95fr]">
+              <div className="relative min-h-[21rem] overflow-hidden rounded-[1.6rem] bg-[linear-gradient(180deg,rgba(47,79,69,0.2),rgba(217,93,57,0.08))]">
+                <Image
+                  src="/foto-fer.jpg"
+                  alt="Fernando portrait"
+                  fill
+                  priority
+                  className="object-cover object-top"
+                />
+              </div>
+
+              <div className="flex flex-col justify-between gap-4 rounded-[1.6rem] border border-[var(--line)] bg-[rgba(255,255,255,0.35)] p-5 dark:bg-[rgba(255,255,255,0.03)]">
+                <div>
+                  <p className="section-kicker">Current focus</p>
+                  <p className="mt-3 text-xl font-semibold leading-8">
+                    AI adoption, automation use cases, enterprise demos, and startup
+                    execution grounded in technical depth.
+                  </p>
+                </div>
+
+                <div className="space-y-3 border-t border-[var(--line)] pt-4">
+                  <div className="flex items-center justify-between gap-3 text-sm text-[var(--muted)]">
+                    <span>Main angle</span>
+                    <span className="font-semibold text-[var(--foreground)]">
+                      Technical storytelling
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-3 text-sm text-[var(--muted)]">
+                    <span>Preferred arena</span>
+                    <span className="font-semibold text-[var(--foreground)]">
+                      Enterprise innovation
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-3 text-sm text-[var(--muted)]">
+                    <span>Also leading</span>
+                    <span className="font-semibold text-[var(--foreground)]">
+                      Events and startup teams
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
 }

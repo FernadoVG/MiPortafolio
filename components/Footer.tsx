@@ -1,16 +1,21 @@
 import React from "react";
 
 export default function Footer() {
-    return (
-        <footer className="mb-10 px-4 text-center text-gray-500">
-        <small className="mb-2 block text-xs">
-            &copy; 2026 Fernando. All rights reserved.
-        </small>
-        <p className="text-xs">
-            <span className="font-semibold">About this website:</span> built with
-            React & Next.js (App Router & Server Actions), TypeScript, Tailwind CSS,
-            Framer Motion, React Email & Resend, Vercel hosting.
+  return (
+    <footer className="mx-auto w-full max-w-7xl px-4 pb-10 pt-4 text-[var(--muted)] sm:px-6 lg:px-8">
+      <div className="flex flex-col gap-3 border-t border-[var(--line)] pt-6 text-sm sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="editorial-title text-lg font-bold text-[var(--foreground)]">
+            Fernando Vergara
+          </p>
+          <p>AI, automation, consulting, and digital product execution.</p>
+        </div>
+        <p className="max-w-md text-sm leading-6">
+          Built with Next.js, TypeScript, Tailwind CSS, Framer Motion, React
+          Email, and a redesigned visual system inspired by editorial portfolio
+          storytelling.
         </p>
-        </footer>
-    );
+      </div>
+    </footer>
+  );
 }

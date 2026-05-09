@@ -9,66 +9,65 @@ import SubmitBtn from "./SubmitBtn";
 import toast from "react-hot-toast";
 
 export default function Contact() {
-    const { ref } = useSectionInView("Contact");
+  const { ref } = useSectionInView("Contact", 0.45);
 
-    return (
-        <motion.section
-        id="contact"
-        ref={ref}
-        className="mb-20 sm:mb-28 w-[min(100%,38rem)] text-center"
-        initial={{
-            opacity: 0,
-        }}
-        whileInView={{
-            opacity: 1,
-        }}
-        transition={{
-            duration: 1,
-        }}
-        viewport={{
-            once: true,
-        }}
-        >
-        <SectionHeading>Contact me</SectionHeading>
+  return (
+    <motion.section
+      id="contact"
+      ref={ref}
+      className="scroll-mt-28 py-18 sm:py-24"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: true }}
+    >
+      <div className="surface-card rounded-[2rem] p-7 sm:p-10 lg:p-12">
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="space-y-5">
+            <p className="section-kicker">Contact</p>
+            <SectionHeading>Let&apos;s build something useful.</SectionHeading>
+            <p className="max-w-xl text-lg leading-8 text-[var(--muted)]">
+              If you&apos;re exploring AI, automation, enterprise demos,
+              product ideas, or a technically grounded web experience, I&apos;d
+              be happy to connect.
+            </p>
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
+              fer.vergaraguzman@gmail.com
+            </p>
+          </div>
 
-        <p className="text-gray-700 -mt-6 dark:text-white/80">
-            Please contact me directly at{" "}
-            <a className="underline" href="mailto:example@gmail.com">
-            fer.vergaraguzman@gmail.com
-            </a>{" "}
-            or through this form.
-        </p>
-
-        <form
-            className="mt-10 flex flex-col dark:text-black"
+          <form
+            className="flex flex-col gap-3"
             action={async (formData) => {
-            const { data, error } = await sendEmail(formData);
+              const { error } = await sendEmail(formData);
 
-            if (error) {
+              if (error) {
                 toast.error(error);
                 return;
-            }
+              }
 
-            toast.success("Email sent successfully!");
+              toast.success("Email sent successfully!");
             }}
-        >
+          >
             <input
-            className="h-14 px-4 rounded-lg borderBlack bg-gray-100 dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-            name="senderEmail"
-            type="email"
-            required
-            maxLength={500}
-            placeholder="Your email"
+              className="rounded-[1.25rem] border border-[var(--line)] bg-[var(--card-strong)] px-5 py-4 text-base text-[var(--foreground)] outline-none placeholder:text-[var(--muted)] focus:border-[var(--accent)]"
+              name="senderEmail"
+              type="email"
+              required
+              maxLength={500}
+              placeholder="Your email"
             />
             <textarea
-            className="h-52 my-3 rounded-lg borderBlack p-4 bg-gray-100 dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-            name="message"
-            placeholder="Your message"
-            required
-            maxLength={5000}
+              className="min-h-[14rem] rounded-[1.5rem] border border-[var(--line)] bg-[var(--card-strong)] p-5 text-base text-[var(--foreground)] outline-none placeholder:text-[var(--muted)] focus:border-[var(--accent)]"
+              name="message"
+              placeholder="Tell me what you're building or where you need support."
+              required
+              maxLength={5000}
             />
             <SubmitBtn />
-        </form>
-        </motion.section>
-    );
+          </form>
+        </div>
+      </div>
+    </motion.section>
+  );
 }

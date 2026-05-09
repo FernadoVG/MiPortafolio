@@ -1,27 +1,27 @@
-import Header from "@/components/Header"
+import Header from "@/components/Header";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Manrope, Syne } from "next/font/google";
 import "./globals.css";
-import "react-vertical-timeline-component/style.min.css";
 import Footer from "@/components/Footer";
 import ThemeContextProvider from "@/context/theme-context";
 import ThemeSwitch from "@/components/ThemeSwitch";
 import { Toaster } from "react-hot-toast";
 import ActiveSectionContextProvider from "@/context/active-section-context";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Fernando | Portafolio personal",
-  description: "Cree este portal para que se pueda saber más sobre mi trabajo y las cosas que ha logrado hasta el momento",
+  title: "Fernando Vergara | AI, Automation & Digital Products",
+  description:
+    "Portfolio of Fernando Vergara, computer engineer focused on AI, automation, technical consulting, and digital product execution.",
 };
 
 export default function RootLayout({
@@ -30,20 +30,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="!scroll-smooth">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-950 h-[5350px] dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90`}>
-  
-        <div className="absolute inset-0 flex justify-center gap-20 -z-10">
-          <div className="bg-[#fbe2e3] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem]" />
-          <div className="bg-[#dbd7fb] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem]" />
-        </div>
+    <html lang="en" className="scroll-smooth">
+      <body
+        className={`${manrope.variable} ${syne.variable} min-h-screen bg-[var(--background)] text-[var(--foreground)] antialiased`}
+      >
         <ThemeContextProvider>
           <ActiveSectionContextProvider>
-            <Header />
-            {children}
-            <Footer />
-            <Toaster position="top-right" />
-            <ThemeSwitch />
+            <div className="site-shell">
+              <div className="site-glow site-glow-left" />
+              <div className="site-glow site-glow-right" />
+              <Header />
+              {children}
+              <Footer />
+              <Toaster position="top-right" />
+              <ThemeSwitch />
+            </div>
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
       </body>

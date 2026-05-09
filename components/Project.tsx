@@ -1,71 +1,91 @@
 "use client";
 
 import { useRef } from "react";
-import { projectsData } from "@/lib/data";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { projectsData } from "@/lib/data";
 
-type ProjectProps = (typeof projectsData)[number];
+type ProjectProps = (typeof projectsData)[number] & {
+  index: number;
+};
 
 export default function Project({
-    title,
-    description,
-    tags,
-    imageUrl,
-    }: ProjectProps) {
-    const ref = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["0 1", "1.33 1"],
-    });
-    const scaleProgess = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-    const opacityProgess = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
+  title,
+  eyebrow,
+  description,
+  impact,
+  role,
+  stack,
+  imageUrl,
+  index,
+}: ProjectProps) {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["0 1", "1 1"],
+  });
 
-    return (
-        <motion.div
-        ref={ref}
-        style={{
-            scale: scaleProgess,
-            opacity: opacityProgess,
-        }}
-        className="group mb-3 sm:mb-8 last:mb-0"
-        >
-        <section className="bg-gray-100 max-w-[42rem] border border-black/5 rounded-lg overflow-hidden sm:pr-8 relative sm:h-[20rem] hover:bg-gray-200 transition sm:group-even:pl-8 dark:text-white dark:bg-white/10 dark:hover:bg-white/20">
-            <div className="pt-4 pb-7 px-5 sm:pl-10 sm:pr-2 sm:pt-10 sm:max-w-[50%] flex flex-col h-full sm:group-even:ml-[18rem]">
-            <h3 className="text-2xl font-semibold">{title}</h3>
-            <p className="mt-2 leading-relaxed text-gray-700 dark:text-white/70">
-                {description}
-            </p>
-            <ul className="flex flex-wrap mt-4 gap-2 sm:mt-auto">
-                {tags.map((tag, index) => (
-                <li
-                    className="bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white rounded-full dark:text-white/70"
-                    key={index}
-                >
-                    {tag}
-                </li>
-                ))}
-            </ul>
-            </div>
+  const y = useTransform(scrollYProgress, [0, 1], [48, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.45, 1]);
+  const isEven = index % 2 === 1;
 
-            <Image
+  return (
+    <motion.article
+      ref={ref}
+      style={{ y, opacity }}
+      className="surface-card overflow-hidden rounded-[2rem]"
+    >
+      <div
+        className={`grid gap-0 lg:grid-cols-2 ${
+          isEven ? "lg:[&>*:first-child]:order-2" : ""
+        }`}
+      >
+        <div className="relative min-h-[18rem] overflow-hidden bg-[linear-gradient(180deg,rgba(47,79,69,0.18),rgba(217,93,57,0.08))]">
+          <Image
             src={imageUrl}
-            alt="Project I worked on"
-            quality={95}
-            className="absolute hidden sm:block top-8 -right-40 w-[28.25rem] rounded-t-lg shadow-2xl
-            transition 
-            group-hover:scale-[1.04]
-            group-hover:-translate-x-3
-            group-hover:translate-y-3
-            group-hover:-rotate-2
+            alt={`${title} project preview`}
+            fill
+            className="object-cover transition duration-500 hover:scale-[1.03]"
+          />
+        </div>
 
-            group-even:group-hover:translate-x-3
-            group-even:group-hover:translate-y-3
-            group-even:group-hover:rotate-2
+        <div className="flex flex-col gap-6 p-6 sm:p-8 lg:p-10">
+          <div className="space-y-4">
+            <p className="section-kicker">{eyebrow}</p>
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <h3 className="editorial-title text-3xl font-bold tracking-[-0.05em] sm:text-4xl">
+                {title}
+              </h3>
+              <span className="rounded-full border border-[var(--line)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--muted)]">
+                {role}
+              </span>
+            </div>
+            <p className="text-base leading-7 text-[var(--muted)] sm:text-lg">
+              {description}
+            </p>
+          </div>
 
-            group-even:right-[initial] group-even:-left-40"
-            />
-        </section>
-        </motion.div>
-    );
+          <div className="rounded-[1.5rem] border border-[var(--line)] bg-[rgba(255,255,255,0.34)] p-5 dark:bg-[rgba(255,255,255,0.03)]">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[var(--foreground)]">
+              Product angle
+            </p>
+            <p className="mt-3 text-sm leading-7 text-[var(--muted)] sm:text-base">
+              {impact}
+            </p>
+          </div>
+
+          <ul className="flex flex-wrap gap-2">
+            {stack.map((tag) => (
+              <li
+                key={tag}
+                className="rounded-full border border-[var(--line)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--muted)]"
+              >
+                {tag}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </motion.article>
+  );
 }

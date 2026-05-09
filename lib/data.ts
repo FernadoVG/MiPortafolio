@@ -1,6 +1,5 @@
 import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
-import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 import corpcommentImg from "@/public/corpcomment.png";
 import rmtdevImg from "@/public/rmtdev.png";
@@ -33,94 +32,137 @@ export const links = [
   },
 ] as const;
 
-export const experiencesData = [
+export const introStats = [
+  { value: "700+", label: "registrations coordinated for a national virtual event during the pandemic" },
+  { value: "10", label: "people led in public relations and event execution teams" },
+  { value: "3", label: "startup and innovation programs where Ucarpool stood out or won recognition" },
+] as const;
+
+export const profilePillars = [
   {
-    title: "Pre-Sales Technical Consultant – IBM Specialist",
-    location: "Ingram Micro · Peru",
-    description:
-      "Technical presales consultant for IBM solutions, advising more than 15 partners and enterprise clients, including major banks and government organizations. Designed and delivered over 25 demos, proofs of concept, and workshops focused on AI, automation, security, integration, and observability.",
-    icon: React.createElement(CgWorkAlt),
-    date: "Aug 2025 – Present",
+    title: "AI and automation focus",
+    items: [
+      "Technical presales around automation, AI, integration, observability, and enterprise platforms",
+      "Hands-on understanding of foundational models, RAG patterns, and how to turn them into usable business solutions",
+      "Strong familiarity with Anthropic tooling, launches, and product evolution through continuous follow-up of their ecosystem",
+    ],
   },
   {
-    title: "B.S. in Computer Engineering",
-    location: "Pontifical Catholic University of Peru (PUCP)",
-    description:
-      "Bachelor’s degree in Computer Engineering with a strong focus on software development, data, and enterprise technologies. Participated in academic and practical projects involving web development, automation, and system design.",
-    icon: React.createElement(LuGraduationCap),
-    date: "2024",
+    title: "Builder and researcher",
+    items: [
+      "Built a thesis project around a RAG assistant with an admin layer for BI analysis, sentiment signals, recurring topics, and end-user feedback",
+      "Comfortable moving from prototype to product thinking through web apps, automation flows, and solution demos",
+      "Able to connect technical implementation with analytics and decision-making instead of treating AI as a one-off feature",
+    ],
   },
   {
-    title: "Professional Intern – Data & AI Technician",
-    location: "IBM · Global Teams",
-    description:
-      "Provided technical support for IBM Big Data, AI, cybersecurity, and cloud solutions. Developed demos, proofs of concept, and technical workshops for engineering and sales teams, achieving an estimated 70% sales conversion rate.",
-    icon: React.createElement(CgWorkAlt),
-    date: "Nov 2023 – Jul 2025",
+    title: "Leadership and momentum",
+    items: [
+      "Led public relations initiatives and strategic alliances for Sedipro PUCP while coordinating a 10-person team",
+      "Co-managed events with 80+ in-person attendees and helped run CONEGP 2021, a national virtual event with 700+ registered participants",
+      "Currently leading Ucarpool, a university-focused carpooling startup recognized in PCI 2024, CAP 2024, and Jump Chile",
+    ],
   },
-  {
-    title: "Infrastructure & Operations Intern",
-    location: "BBVA · Peru",
-    description:
-      "Supported cloud-based infrastructure and operations by resolving IT tickets for internal users while maintaining SLA compliance above 90%. Built dashboards and integrated internal databases to improve reporting processes. Automated workflows that reduced implementation time by approximately 80%.",
-    icon: React.createElement(CgWorkAlt),
-    date: "Jul 2022 – Jul 2023",
-  },
-  
 ] as const;
 
 export const projectsData = [
   {
     title: "AcrediPUCP",
+    eyebrow: "Academic platform",
     description:
-      "I worked as a frontend developer on this system project for 6 months. Online platform for the accreditation process of the different faculties and specialties of PUCP.",
-    tags: ["React", "Node.js", "MySQL", "Bootstrap", "AWS"],
+      "Frontend delivery for a university accreditation platform used to coordinate evidence, process visibility, and faculty workflows across PUCP.",
+    impact:
+      "Balanced institutional complexity with a practical interface that helped different faculties move through accreditation tasks with less friction.",
+    role: "Frontend developer",
+    stack: ["React", "Node.js", "MySQL", "Bootstrap", "AWS"],
     imageUrl: corpcommentImg,
   },
   {
     title: "Ucarpool",
+    eyebrow: "Mobility startup",
     description:
-      "I led the technical architecture, development strategy, and public relations, acting as PM for a team of two developers using React Native, Node.js, and Google services APIs.",
-    tags: ["React", "TypeScript", "Next.js", "Tailwind", "Redux"],
+      "Leading a university-focused carpooling startup, shaping the product vision, technical direction, partnerships, and team coordination around a real mobility pain point.",
+    impact:
+      "The project earned recognition in PCI 2024 and CAP 2024 at PUCP, and also reached the top 100 in Jump Chile, validating both the concept and the execution behind it.",
+    role: "Founder, PM, and technical lead",
+    stack: ["React Native", "Node.js", "Google APIs", "Product Strategy"],
     imageUrl: rmtdevImg,
   },
   {
     title: "Qarta",
+    eyebrow: "Commerce experience",
     description:
-      "Qarta connects people and businesses: discover products, chat with stores, shop easily, and earn achievements and discounts with every purchase.",
-    tags: ["React", "Next.js", "SQL", "Tailwind", "Framer"],
+      "Designed and developed a digital commerce concept that connects people with local businesses through chat, rewards, and discovery.",
+    impact:
+      "Framed the product around engagement loops, lightweight communication, and repeat-purchase incentives instead of a traditional catalog-only experience.",
+    role: "Product-minded full-stack builder",
+    stack: ["React", "Next.js", "SQL", "Tailwind", "Framer Motion"],
     imageUrl: wordanalyticsImg,
   },
 ] as const;
 
-export const skillsData = [
-  { name: "Python", category: "languages" },
-  { name: "JavaScript", category: "languages" },
-  { name: "TypeScript", category: "languages" },
-  { name: "C++", category: "languages" },
+export const skillGroups = [
+  {
+    title: "Languages",
+    description: "Core tools I use to move from idea to implementation.",
+    items: ["Python", "JavaScript", "TypeScript", "C++"],
+  },
+  {
+    title: "Frontend",
+    description: "Interfaces, interaction, and polished web delivery.",
+    items: ["React", "Next.js", "HTML/CSS", "Tailwind", "Bootstrap"],
+  },
+  {
+    title: "Backend & data",
+    description: "APIs, databases, and integration-oriented thinking.",
+    items: ["Node.js", "GraphQL", "MongoDB", "MySQL", "PostgreSQL", "SingleStoreDB"],
+  },
+  {
+    title: "Enterprise toolkit",
+    description: "Platforms I use in consulting, demos, and solution design.",
+    items: ["watsonx", "Instana", "Guardium", "API Connect", "webMethods", "Power BI", "Anthropic tools"],
+  },
+] as const;
 
-  { name: "React", category: "frontend" },
-  { name: "Next.js", category: "frontend" },
-  { name: "HTML/CSS", category: "frontend" },
-  { name: "Tailwind", category: "frontend" },
-  { name: "Bootstrap", category: "frontend" },
-
-  { name: "Node.js", category: "backend" },
-  { name: "GraphQL", category: "backend" },
-
-  { name: "MongoDB", category: "databases" },
-  { name: "MySQL", category: "databases" },
-  { name: "PostgreSQL", category: "databases" },
-  { name: "SinglestoreDB", category: "databases" },
-
-  { name: "Git", category: "tooling" },
-  { name: "Excel", category: "tooling" },
-  { name: "PowerBI", category: "tooling" },
-  { name: "SAP", category: "tooling" },
-
-  { name: "watsonx", category: "ibm" },
-  { name: "Instana", category: "ibm" },
-  { name: "Guardium", category: "ibm" },
-  { name: "Api Connect", category: "ibm" },
-  { name: "webMethods", category: "ibm" },
+export const experiencesData = [
+  {
+    title: "Pre-Sales Technical Consultant - IBM Specialist",
+    location: "Ingram Micro, Peru",
+    description:
+      "Supporting partners and enterprise clients in IBM-related initiatives across AI, automation, security, integration, and observability. My role combines technical discovery, demos, workshops, and solution guidance while I continue deepening my focus on AI adoption and automation use cases.",
+    icon: React.createElement(CgWorkAlt),
+    date: "Aug 2025 - Present",
+  },
+  {
+    title: "Professional Intern - Data & AI Technician",
+    location: "IBM, Global Teams",
+    description:
+      "Supported technical initiatives across Big Data, AI, cybersecurity, and cloud solutions. Built demos, workshops, and proof-of-concept assets for engineering and sales teams, strengthening the bridge between technical potential and commercial adoption.",
+    icon: React.createElement(CgWorkAlt),
+    date: "Nov 2023 - Jul 2025",
+  },
+  {
+    title: "Public Relations Coordinator - Sedipro PUCP",
+    location: "Project management student organization",
+    description:
+      "Built alliances with external organizations, coordinated a 10-person public relations team, and helped execute events with strong attendance. One of the biggest milestones was helping manage CONEGP 2021, a national virtual event with more than 700 registered participants during the pandemic.",
+    icon: React.createElement(CgWorkAlt),
+    date: "University leadership stage",
+  },
+  {
+    title: "Infrastructure & Operations Intern",
+    location: "BBVA, Peru",
+    description:
+      "Worked on cloud and operations support, solved internal infrastructure requests, built reporting dashboards, and automated workflows that significantly reduced manual implementation time.",
+    icon: React.createElement(CgWorkAlt),
+    date: "Jul 2022 - Jul 2023",
+  },
+  {
+    title: "B.S. in Computer Engineering",
+    location: "Pontifical Catholic University of Peru (PUCP)",
+    description:
+      "Built a foundation in software engineering, systems, and data while working on practical web, automation, and product-oriented academic projects.",
+    icon: React.createElement(LuGraduationCap),
+    date: "Graduated 2024",
+  },
 ] as const;

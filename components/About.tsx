@@ -1,50 +1,72 @@
 "use client";
 
 import React from "react";
-import SectionHeading from "./section-heading";
 import { motion } from "framer-motion";
+import SectionHeading from "./section-heading";
+import { profilePillars } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
 
 export default function About() {
-    const { ref } = useSectionInView("About");
-    return (
-        <motion.section
-            ref={ref}
-            className="mb-28 max-w-[45rem] text-center leading-8 sm:mb-40 scroll-mt-28"
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.175 }}
-            id="about"
-            >
-            <SectionHeading>About me</SectionHeading>
+  const { ref } = useSectionInView("About", 0.45);
 
-            <p className="mb-3">
-                I’m a <span className="font-medium">Computer Engineer</span> with experience
-                working in <span className="font-medium">AI, automation, and cloud-based
-                enterprise solutions</span>. I have worked in global technology companies
-                like <span className="font-medium">IBM</span> and{" "}
-                <span className="font-medium">Ingram Micro</span>, supporting presales,
-                solution design, and real-world implementations for large clients, including
-                banks and government organizations.
-            </p>
+  return (
+    <motion.section
+      ref={ref}
+      id="about"
+      className="scroll-mt-28 py-18 sm:py-24"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+    >
+      <div className="mb-8 grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+        <div className="space-y-5">
+          <p className="section-kicker">About</p>
+          <SectionHeading>Part consultant. Part builder.</SectionHeading>
+        </div>
 
-            <p className="mb-3">
-                My work focuses on bridging <span className="italic">technical depth</span>{" "}
-                with <span className="italic">business value</span>. I’ve designed and
-                delivered demos, proofs of concept, and workshops around{" "}
-                <span className="underline">
-                AI, automation, integration, security, and observability
-                </span>{" "}
-                solutions. I enjoy understanding complex problems and translating them into
-                scalable and practical systems.
-            </p>
+        <div className="space-y-6 text-lg leading-8 text-[var(--muted)]">
+          <p>
+            My profile blends technical depth with leadership and execution. As a
+            computer engineer, I currently work in technical presales, focusing on
+            automation and AI tools while helping translate complex technologies
+            into demos, workshops, and solutions that make sense for real clients.
+          </p>
 
-            <p>
-                Beyond development, I have experience in technical consulting, product
-                architecture, and startup environments as a{" "}
-                <span className="font-medium">Co-founder and CTO</span>. I’m driven by
-                continuous learning and building impactful technology.
-            </p>
-        </motion.section>
-    );
+          <p>
+            That technical side is only part of the story. I&apos;ve also led
+            university teams, built strategic alliances, coordinated large-scale
+            events, and now drive a startup for university mobility. I enjoy being
+            the person who can understand the system, explain the opportunity, and
+            mobilize people around it. Experiences in Chile and Finland also gave
+            me a closer look at how innovation teams work in different contexts.
+          </p>
+        </div>
+      </div>
+
+      <div className="grid gap-5 lg:grid-cols-2">
+        {profilePillars.map((pillar, index) => (
+          <motion.article
+            key={pillar.title}
+            initial={{ opacity: 0, y: 36 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ delay: index * 0.08 }}
+            className="surface-card rounded-[2rem] p-7 sm:p-8"
+          >
+            <p className="section-kicker">{pillar.title}</p>
+            <ul className="mt-5 space-y-4 text-base leading-7 text-[var(--muted)] sm:text-lg">
+              {pillar.items.map((item) => (
+                <li
+                  key={item}
+                  className="border-t border-[var(--line)] pt-4 first:border-t-0 first:pt-0"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </motion.article>
+        ))}
+      </div>
+    </motion.section>
+  );
 }
